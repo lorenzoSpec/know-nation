@@ -7,8 +7,6 @@
 
 const CONFIRM = document.getElementById('confirm');
 const BD = document.getElementById('body');
-let ctrC = [];
-let savedName = [];
 
 /*===========================================
 
@@ -19,16 +17,9 @@ let savedName = [];
 /* get the name given by user and display guesses */
 function nameInput(){
   let inputNameVar = document.getElementById("input-name");
+  let name = inputNameVar.value;
 
-  let name = "";
-  if(savedName.length === 0){
-    savedName.push(inputNameVar.value);
-    name = savedName[0];
-    removeSect();
-  } else if (savedName.length > 0) {
-    name = savedName[0];
-  }
-  
+  removeSect();
   nation(name);
 }
 
@@ -38,34 +29,14 @@ async function nation(nameGiven){
 
   let nameToNation =  await fetch(`https://api.nationalize.io/?name=${nameGiven}`);
   let res = await nameToNation.json();
-  let ctry = await res.country;
+  let isos = await res.country;
 
   removeDarkScrn();
-  text(ctry);
-}
-
-/* to show what country it is */
-async function text(c){
-  console.log(ctrC.length);
-  let cCode = "";
-  if(c.length > 0){
-    cCode = c[ctrC.length].country_id;
-  } 
-  console.log('cCode', cCode);
-
-  let cName = await fetch(`https://api.first.org/data/v1/countries?q=${cCode}`);
-  let cJson = await cName.json();
-  let cObj = await cJson.data[cCode];
-  let countryName = await cObj.country;  
-
-  console.log(countryName);
-  createGuess(countryName, cCode);
+  createGuess(isos);
 }
 
 /* create a DOM for guess */
-function createGuess(country, cCode){
-  let flg = flag(cCode);
-
+function createGuess(isos){
   const CONT = document.createElement('div');
   const IMG = document.createElement('img');
   const PEL = document.createElement('p');
@@ -73,13 +44,13 @@ function createGuess(country, cCode){
   const BTNG = document.createElement('button');
   const BTNN = document.createElement('button');
 
-  let PTXT = document.createTextNode(`I think it is ${country}`);
+  let PTXT = document.createTextNode("");
   let GTXT = document.createTextNode('Great!');
   let NTXT = document.createTextNode('No');
 
   CONT.setAttribute('id', 'guess-div');
   IMG.setAttribute('id', 'ctry-flag');
-  IMG.setAttribute('src', flg);
+  IMG.setAttribute('src', "");
   IMG.setAttribute('width', '300');
   PEL.setAttribute('id', 'guess-p');
   DIV.setAttribute('id', 'great-no');
@@ -96,27 +67,65 @@ function createGuess(country, cCode){
   BTNG.appendChild(GTXT);
   BTNN.appendChild(NTXT);
 
-  BTNN.addEventListener('click', noBtn);
+  BTNN.addEventListener('click', function(){noBtn(isos)});
 
   BD.appendChild(CONT);
+
+  text(isos);
 }
 
-function noBtn(){
-  ctrC.push(0);
-  console.log(ctrC);
-  nameInput();
+
+
+/* to show what country it is */
+let counter = [];
+
+async function text(isos){
+
+  let pGuess = document.getElementById('guess-p');
+  let cLength = counter.length;
+
+  let isoCurrent = "";
+  if(isos.length > 0){
+    try {
+      isoCurrent = isos[cLength].country_id;
+    } catch(err) {
+      document.getElementById('guess-div').remove();
+      wrongGuess();
+    }
+  } 
+
+  let cName = await fetch(`https://api.first.org/data/v1/countries?q=${isoCurrent}`);
+  let cJson = await cName.json();
+  let cObj = await cJson.data[isoCurrent];
+  let countryName = await cObj.country;  
+
+  flag(isoCurrent);
+
+  switch(cLength){
+    case 0:
+      return pGuess.textContent = `I think it is ${countryName}`;
+    case 1:
+      return pGuess.textContent = `Ow I'm sure it's ${countryName}`;
+    case 2: 
+      return pGuess.textContent = `Last guess!, ${countryName}`;
+    default:
+      return pGuess.textContent = `Please check the spelling of your name`;
+  }
 }
 
 /* function for dynamic showing of flag depends on name */
-function flag(cCode){
-  let f = cCode;
+function flag(isoCurrent){
+  let f = isoCurrent;
+  let imgGuess = document.getElementById('ctry-flag');
   
-  let src = '';
   if(f.length > 0){
-    src = `https://flagcdn.com/${f.toLocaleLowerCase()}.svg`;
+    imgGuess.src = `https://flagcdn.com/${f.toLocaleLowerCase()}.svg`;
   }
+}
 
-  return src;
+function noBtn(isos){
+  counter.push(0);
+  text(isos);
 }
 
 /* to darken the screen */
@@ -135,6 +144,40 @@ function removeSect(){
 function removeDarkScrn(){
   document.getElementById('dark-screen').remove();
 }
+
+/*===========================================
+
+    GUESSES ARE WRONG
+
+  ===========================================*/
+
+  function wrongGuess(){
+    const CONT = document.createElement('div');
+    const IEL = document.createElement('i');
+    const PEL = document.createElement('p');
+    const AEL = document.createElement('p');
+
+    let aTxt = document.createTextNode('Try other name');
+    let pTxt = document.createTextNode('Aw! all my guesses are wrong');
+
+    CONT.setAttribute('id', 'wrong-guess');
+    IEL.setAttribute('class', 'fas fa-sad-cry');
+    PEL.setAttribute('id', 'wrong-p');
+    AEL.setAttribute('id', 'new-name');
+
+    AEL.appendChild(aTxt);
+    PEL.appendChild(pTxt);
+
+    AEL.addEventListener('click', function(){
+      location.reload();
+    });
+
+    CONT.appendChild(IEL);
+    CONT.appendChild(AEL);
+    CONT.appendChild(PEL);
+
+    BD.appendChild(CONT);
+  }
 
 /*===========================================
 
