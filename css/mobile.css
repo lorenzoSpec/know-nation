@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Della+Respira&family=Montserrat:ital@1&family=Nunito&family=Poppins&family=Ubuntu&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #0090DD;
+  --dark-blue: #014366;
+}
+
+/*  ======================================================
+
+    HEADER STYLES
+
+    ======================================================*/
+
+#header {
+  background-color: var(--blue);
+  width: 100%;
+  padding: 10px 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+#header h1 {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+/*  ======================================================
+
+    INPUT NAME CONTAINER
+
+    ======================================================*/
+
+#input-name-cont {
+  width: 100%;
+  padding: 80px 0 20px 0; 
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#input-name-cont h2 {
+  font-size: 40px;
+  font-family: "Nunito", sans-serif;
+  margin-left: 10px;
+  font-weight: normal;
+  opacity: 0.7;
+}
+
+#input-name {
+  min-width: 280px;
+  margin-top: 25px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  border: none;
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+}
+
+#confirm {
+  background-color: var(--blue);
+  color: white;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+/*  ======================================================
+
+    GUESS STYLES
+
+    ======================================================*/
+
+#guess-div {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0 0 0; 
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#ctry-flag {
+  box-shadow: 0 10px 15px #BABABA;
+}
+
+#guess-p {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  margin-top: 25px;
+  opacity: 0.7;
+}
+
+#great-no {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+#great-btn, #no-btn {
+  font-family: "Poppins", sans-serif;;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-left: 5px;
+}
+
+#great-btn {
+  background-color: var(--blue);
+  color: white;
+}
+
+#no-btn {
+  background-color: #DBDBDB;
+}
+
+
+/*  ======================================================
+
+    OTHERS
+
+    ======================================================*/
+
+#dark-screen {
+  width: 100%;
+  height: 100%;
+  background-color: var(--blue);
+  opacity: 0.4;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
