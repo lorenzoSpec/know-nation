@@ -135,6 +135,43 @@
 
 /*  ======================================================
 
+    GREAT GUESS
+
+    ======================================================*/
+
+#great-div {
+  width: 100%;
+  height: 100%;
+  padding: 70px 0 20px 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#great-img {
+  box-shadow: 0 10px 15px #BABABA;
+}
+
+#great-info-div{
+  width: 90%;
+  margin-top: 20px;
+}
+
+#great-info-div i{
+  color: var(--dark-blue);
+}
+
+#prob-p {
+  position: fixed;
+  bottom: 10px;
+  left: 3px;
+  font-size: 10px;
+  font-family: "Nunito", sans-serif;
+}
+
+/*  ======================================================
+
     WRONG GUESS
 
     ======================================================*/
