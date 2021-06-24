@@ -7,20 +7,29 @@
 
 const CONFIRM = document.getElementById('confirm');
 const BD = document.getElementById('body');
+let ctrC = [];
+let savedName = [];
 
 /*===========================================
 
-    ALGORITHMS  
+    CODE FOR GUESSING  
 
   ===========================================*/
 
 /* get the name given by user and display guesses */
 function nameInput(){
   let inputNameVar = document.getElementById("input-name");
-  let name = inputNameVar.value;
+
+  let name = "";
+  if(savedName.length === 0){
+    savedName.push(inputNameVar.value);
+    name = savedName[0];
+    removeSect();
+  } else if (savedName.length > 0) {
+    name = savedName[0];
+  }
+  
   nation(name);
-  removeSect();
-  inputNameVar.value = "";
 }
 
 /* fetch the api with given name */
@@ -37,9 +46,10 @@ async function nation(nameGiven){
 
 /* to show what country it is */
 async function text(c){
+  console.log(ctrC.length);
   let cCode = "";
   if(c.length > 0){
-    cCode = c[0].country_id;
+    cCode = c[ctrC.length].country_id;
   } 
   console.log('cCode', cCode);
 
@@ -86,7 +96,15 @@ function createGuess(country, cCode){
   BTNG.appendChild(GTXT);
   BTNN.appendChild(NTXT);
 
+  BTNN.addEventListener('click', noBtn);
+
   BD.appendChild(CONT);
+}
+
+function noBtn(){
+  ctrC.push(0);
+  console.log(ctrC);
+  nameInput();
 }
 
 /* function for dynamic showing of flag depends on name */
