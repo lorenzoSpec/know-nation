@@ -77,7 +77,7 @@ function createGuess(isos){
 
 /* to show what country it is */
 let counter = [];
-let x = [];
+let countryName = [];
 
 async function text(isos){
 
@@ -93,34 +93,30 @@ async function text(isos){
     }
   } 
 
-  let cName = await fetch(`https://api.first.org/data/v1/countries?q=${isoCurrent}`);
-  let cJson = await cName.json();
-  let cObj = await cJson.data[isoCurrent];
-  let countryName = await cObj.country;  
-
   flag(isoCurrent);
-  isoToFull(isoCurrent);
-  return diffText(cLength, countryName);
+  await isoToFull(isoCurrent);
+  console.log('text was called');
+  return diffText(cLength, countryName[countryName.length - 1]);
 }
 
 async function isoToFull(isoCurrent){
   let cName = await fetch(`https://api.first.org/data/v1/countries?q=${isoCurrent}`);
   let cJson = await cName.json();
   let cObj = await cJson.data[isoCurrent];
-  let countryName = await cObj.country;  
-  x.push(countryName);
+  let countryNameA = await cObj.country;  
+  countryName.push(countryNameA);
 }
 
-function diffText(cLength, countryName){
+function diffText(cLength, fllNm){
   let pGuess = document.getElementById('guess-p');
 
   switch(cLength){
     case 0:
-      return pGuess.textContent = `I think it is ${countryName}`;
+      return pGuess.textContent = `I think it is ${fllNm}`;
     case 1:
-      return pGuess.textContent = `Ow I'm sure it's ${countryName}`;
+      return pGuess.textContent = `Ow I'm sure it's ${fllNm}`;
     case 2: 
-      return pGuess.textContent = `Last guess!, ${countryName}`;
+      return pGuess.textContent = `Last guess!, ${fllNm}`;
     default:
       return pGuess.textContent = `Please check the spelling of your name`;
   }
@@ -166,13 +162,11 @@ function removeDarkScrn(){
 
 /*===========================================
 
-    GUESSES IS CORRECT
+    GUESS IS CORRECT
 
   ===========================================*/
 
 async function greatGuess(isos){
-
-  console.log(x);
 
   let varProb = showProb(isos);
 
@@ -182,11 +176,6 @@ async function greatGuess(isos){
     isoCurrent = isos[cLength].country_id;
   } 
 
-  let cName = await fetch(`https://api.first.org/data/v1/countries?q=${isoCurrent}`);
-  let cJson = await cName.json();
-  let cObj = await cJson.data[isoCurrent];
-  let countryName = await cObj.country; 
-
   const CONT = document.createElement('div');
   const IMG = document.createElement('img');
   const DIV = document.createElement('div');
@@ -195,7 +184,7 @@ async function greatGuess(isos){
   const PROB = document.createElement('p');
 
   let probTxt = document.createTextNode("Prob: " + varProb);
-  let fullCName = document.createTextNode(countryName);
+  let fullCName = document.createTextNode(countryName[countryName.length - 1]);
 
   CONT.setAttribute('id', 'great-div');
   IMG.setAttribute('id', 'great-img');

@@ -156,10 +156,20 @@
 #great-info-div{
   width: 90%;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#great-p {
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
 }
 
 #great-info-div i{
   color: var(--dark-blue);
+  font-size: 20px;
+  margin-left: 5px;
 }
 
 #prob-p {
