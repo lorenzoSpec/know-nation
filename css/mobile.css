@@ -235,6 +235,7 @@
   right: 15px;
   color: var(--blue);
   font-family: "Nunito", sans-serif;
+  font-weight: bold;
   cursor: pointer;
 }
 
