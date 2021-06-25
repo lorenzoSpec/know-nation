@@ -24,15 +24,41 @@ function nameInput(){
 }
 
 /* fetch the api with given name */
-async function nation(nameGiven){
+async function nation(nameGiven) {
   darkenScreen();
 
-  let nameToNation =  await fetch(`https://api.nationalize.io/?name=${nameGiven}`);
+  let nameToNation = await fetch(`https://api.nationalize.io/?name=${nameGiven}`).catch(handleErr);
   let res = await nameToNation.json();
-  let isos = await res.country;
+
+  if(res.country.length === 0){
+    console.log("ERROR", nameGiven);
+    noNameServer(nameGiven)
+  } else {
+    let isos = await res.country;
+    createGuess(isos);
+  }
 
   removeDarkScrn();
-  createGuess(isos);
+}
+
+function noNameServer(nameGiven) {
+  const P = document.createElement('p');
+  P.setAttribute('id', "no-name-like-that");
+  let pTxt = document.createTextNode(`Hmm, ${nameGiven} I don't know that name!`);
+  P.appendChild(pTxt);
+  BD.appendChild(P);
+  tryNewName();
+}
+
+/* handle error if thre is an error on fetching the API */
+function handleErr(err){
+  console.warn(err);
+  let res = new Promise(
+    JSON.stringify({
+      message: "An error occur!"
+    })
+  );
+  return res;
 }
 
 /* create a DOM for guess */
