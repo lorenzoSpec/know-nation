@@ -101,6 +101,7 @@
 }
 
 #guess-p {
+  width: 90%;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
   margin-top: 25px;
@@ -131,6 +132,88 @@
   background-color: #DBDBDB;
 }
 
+
+/*  ======================================================
+
+    GREAT GUESS
+
+    ======================================================*/
+
+#great-div {
+  width: 100%;
+  height: 100%;
+  padding: 70px 0 20px 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#great-img {
+  box-shadow: 0 10px 15px #BABABA;
+}
+
+#great-info-div{
+  width: 90%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#great-p {
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+}
+
+#great-info-div i{
+  color: var(--dark-blue);
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+#prob-p {
+  position: fixed;
+  bottom: 10px;
+  left: 3px;
+  font-size: 10px;
+  font-family: "Nunito", sans-serif;
+}
+
+/*  ======================================================
+
+    WRONG GUESS
+
+    ======================================================*/
+
+#wrong-guess {
+  width: 100%;
+  height: 100vh;
+  padding: 70px 0 20px 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#wrong-guess i {
+  font-size: 200px;
+  color: var(--dark-blue);
+}
+
+#wrong-p {
+  font-size: 20px;
+  margin-top: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+#new-name {
+  position: fixed;
+  bottom: 10px;
+  right: 15px;
+  color: var(--blue);
+  font-family: "Nunito", sans-serif;
+}
 
 /*  ======================================================
 
