@@ -81,7 +81,9 @@ function createGuess(isos){
   PEL.setAttribute('id', 'guess-p');
   DIV.setAttribute('id', 'great-no');
   BTNG.setAttribute('id', 'great-btn');
+  BTNG.setAttribute('title', 'My guess is right');
   BTNN.setAttribute('id', 'no-btn');
+  BTNN.setAttribute('title', 'My guess is wrong');
 
   CONT.appendChild(IMG);
   CONT.appendChild(PEL);
@@ -282,6 +284,7 @@ function tryNewName(){
   let aTxt = document.createTextNode('Try other name');
 
   AEL.setAttribute('id', 'new-name');
+  AEL.setAttribute('title', 'play with other names');
   AEL.appendChild(aTxt);
 
   AEL.addEventListener('click', function(){
