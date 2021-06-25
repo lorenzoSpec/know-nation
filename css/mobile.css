@@ -86,6 +86,7 @@
   margin-top: 20px;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 /*  ======================================================
@@ -130,6 +131,7 @@
   border-radius: 5px;
   padding: 10px 15px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 #great-btn {
@@ -233,6 +235,7 @@
   right: 15px;
   color: var(--blue);
   font-family: "Nunito", sans-serif;
+  cursor: pointer;
 }
 
 /*  ======================================================

@@ -1,0 +1,103 @@
+@media (min-width: 1025px) and (max-width: 1440px){
+  /*  ======================================================
+
+    HEADER STYLES
+
+    ======================================================*/
+
+    #header h1 {
+      text-align: left;
+      margin-left: 10px;
+    }
+  
+  /* ======================================================
+  
+      INPUT NAME CONTAINER
+  
+    ======================================================*/
+
+      #input-name-cont {
+        padding: 120px 0 20px 0; 
+        align-items: flex-start;
+      }
+      
+      #input-name-cont h2 {
+        margin-left: 180px;
+      }
+      
+      #div-for-two {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+      }
+      
+      #input-name {
+        height: 45px;
+        min-width: 600px;
+        margin-left: 180px;
+      }
+      
+      #confirm {
+        height: 43px;
+        margin-left: 10px;
+        padding: 5px 20px;
+      }
+
+
+  /*  ======================================================
+
+    GUESS STYLES
+
+    ======================================================*/
+
+    #guess-div {
+      padding: 80px 0 0 0; 
+    }
+
+    #ctry-flag {
+      width: 350px;
+    }
+
+    #great-no {
+      position: relative;
+      margin: 30px 0 0 30px;
+    }
+
+    #great-btn, #no-btn {
+      width: 100px;
+      height: 50px;
+      padding: 5px 10px;
+    }
+
+
+  /*  ======================================================
+
+    GREAT GUESS
+
+  ======================================================*/
+
+    #great-div {
+      align-items: flex-start;
+    }
+
+    #great-img {
+      width: 450px;
+      margin-left: 50px;
+    }
+
+    #great-info-div{
+      width: 400px;
+      justify-content: flex-start;
+      margin-left: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    #new-name {
+      position: fixed;
+      bottom: 10px;
+      right: 15px;
+      color: var(--blue);
+      font-size: 20px;
+      font-family: "Nunito", sans-serif;
+    }
+}
