@@ -57,6 +57,12 @@
   opacity: 0.7;
 }
 
+#input-name-cont p {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 100;
+  opacity: 0.7;
+}
+
 #div-for-two {
   width: 100%;
   display: flex;
@@ -76,6 +82,17 @@
   border-radius: 5px;
 }
 
+.no-name-inputed-h {
+  font-size: 0;
+}
+
+.no-name-inputed-s {
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  color:rgb(255, 133, 133);
+  margin:10px 0 0 30px;
+}
+
 #confirm {
   background-color: var(--blue);
   color: white;
@@ -87,6 +104,11 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: opacity 0.1s linear;
+}
+
+#confirm:hover {
+  opacity: 0.7;
 }
 
 /*  ======================================================
@@ -132,6 +154,11 @@
   padding: 10px 15px;
   margin-left: 5px;
   cursor: pointer;
+  transition: opacity 0.1s linear;
+}
+
+#great-btn:hover, #no-btn:hover {
+  opacity: 0.7;
 }
 
 #great-btn {
@@ -237,6 +264,11 @@
   font-family: "Nunito", sans-serif;
   font-weight: bold;
   cursor: pointer;
+  transition: opacity 0.1.s linear;
+}
+
+#new-name:hover {
+  opacity: 0.7;
 }
 
 /*  ======================================================
