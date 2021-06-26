@@ -19,8 +19,12 @@ function nameInput(){
   let inputNameVar = document.getElementById("input-name");
   let name = inputNameVar.value;
 
-  removeSect();
-  nation(name);
+  if(name.length !== 0){
+    nation(name);
+    removeSect();
+  } else {
+    console.log('none');
+  }
 }
 
 /* fetch the api with given name */
@@ -81,9 +85,7 @@ function createGuess(isos){
   PEL.setAttribute('id', 'guess-p');
   DIV.setAttribute('id', 'great-no');
   BTNG.setAttribute('id', 'great-btn');
-  BTNG.setAttribute('title', 'My guess is right');
   BTNN.setAttribute('id', 'no-btn');
-  BTNN.setAttribute('title', 'My guess is wrong');
 
   CONT.appendChild(IMG);
   CONT.appendChild(PEL);

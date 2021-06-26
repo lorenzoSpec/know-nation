@@ -21,7 +21,7 @@
         align-items: flex-start;
       }
       
-      #input-name-cont h2 {
+      #input-name-cont h2, #input-name-cont p {
         margin-left: 180px;
       }
       
